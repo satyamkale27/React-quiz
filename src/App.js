@@ -2,6 +2,7 @@ import { useEffect, useReducer } from "react";
 import Header from "./Header";
 import Main from "./main";
 import Loader from "./Loader";
+import Error from "./Error";
 import { type } from "@testing-library/user-event/dist/type";
 const initialState = {
   questions: [],
@@ -34,7 +35,10 @@ export default function App() {
   return (
     <div className="App">
       <Header />
-      <Main className="main">{status === "loading" && <Loader />}</Main>
+      <Main className="main">
+        {status === "loading" && <Loader />}
+        {status === "error" && <Error />}
+      </Main>
     </div>
   );
 }
