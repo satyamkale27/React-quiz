@@ -2,7 +2,14 @@ function Questions({ question }) {
   console.log(question);
   return (
     <div>
-      <h1>{question.question}</h1>
+      <h4>{question.question}</h4>
+      <div className="options">
+        {question.options.map((option) => (
+          <button className="btn btn-option" key={option}>
+            {option}
+          </button>
+        ))}
+      </div>
     </div>
   );
 }
