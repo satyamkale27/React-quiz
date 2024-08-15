@@ -5,6 +5,7 @@ import Loader from "./Loader";
 import Error from "./Error";
 import Startscreen from "./Startscreen";
 import Questions from "./Questions";
+import NextButton from "./NextButton";
 import { type } from "@testing-library/user-event/dist/type";
 const initialState = {
   questions: [],
@@ -39,6 +40,8 @@ function reducer(state, action) {
             ? state.points + question.points
             : state.points,
       };
+    case "nextQuestion":
+      return { ...state, index: state.index + 1, answer: null };
     default:
       throw new Error("Action unkonwn");
   }
@@ -66,11 +69,14 @@ export default function App() {
           <Startscreen numQuestions={numQuestions} dispatch={dispatch} />
         )}
         {status === "active" && (
-          <Questions
-            question={questions[index]}
-            dispatch={dispatch}
-            answer={answer}
-          />
+          <>
+            <Questions
+              question={questions[index]}
+              dispatch={dispatch}
+              answer={answer}
+            />
+            <NextButton dispatch={dispatch} answer={answer} />
+          </>
         )}
       </Main>
     </div>
