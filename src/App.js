@@ -4,6 +4,7 @@ import Main from "./main";
 import Loader from "./Loader";
 import Error from "./Error";
 import Startscreen from "./Startscreen";
+import Questions from "./Questions";
 import { type } from "@testing-library/user-event/dist/type";
 const initialState = {
   questions: [],
@@ -19,6 +20,11 @@ function reducer(state, action) {
       return {
         ...state,
         status: "error",
+      };
+    case "start":
+      return {
+        ...state,
+        status: "active",
       };
     default:
       throw new Error("Action unkonwn");
@@ -40,7 +46,10 @@ export default function App() {
       <Main className="main">
         {status === "loading" && <Loader />}
         {status === "error" && <Error />}
-        {status === "ready" && <Startscreen numQuestions={numQuestions} />}
+        {status === "ready" && (
+          <Startscreen numQuestions={numQuestions} dispatch={dispatch} />
+        )}
+        {status === "active" && <Questions />}
       </Main>
     </div>
   );
