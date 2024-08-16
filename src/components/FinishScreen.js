@@ -1,12 +1,13 @@
-function FinishScreen({ points, maxPossiblePoints }) {
+function FinishScreen({ points, maxPossiblePoints, highscore }) {
   const percentage = (points / maxPossiblePoints) * 100;
   return (
-    <div>
+    <>
       <p className="result">
         You scored <strong> {points}</strong> out of {maxPossiblePoints} (
         {Math.ceil(percentage)}%)
       </p>
-    </div>
+      <p className="highscore">(Highscore:{highscore} points)</p>
+    </>
   );
 }
 
