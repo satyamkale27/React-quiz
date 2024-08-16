@@ -3,7 +3,7 @@ function FinishScreen({ points, maxPossiblePoints }) {
   return (
     <div>
       <p className="result">
-        You scored <strong>{points}</strong>out of {maxPossiblePoints} (
+        You scored <strong> {points}</strong> out of {maxPossiblePoints} (
         {Math.ceil(percentage)}%)
       </p>
     </div>
