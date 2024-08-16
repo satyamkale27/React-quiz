@@ -88,7 +88,12 @@ export default function App() {
               dispatch={dispatch}
               answer={answer}
             />
-            <NextButton dispatch={dispatch} answer={answer} />
+            <NextButton
+              dispatch={dispatch}
+              answer={answer}
+              index={index}
+              numQuestions={numQuestions}
+            />
           </>
         )}
         {status === "finished" && (
