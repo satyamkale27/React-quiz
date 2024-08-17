@@ -11,7 +11,7 @@ import { type } from "@testing-library/user-event/dist/type";
 import FinishScreen from "./FinishScreen";
 import Timer from "./Timer";
 import Footer from "./Footer";
-
+const SECS_PER_QUESTION = 30;
 const initialState = {
   questions: [],
 
@@ -21,7 +21,7 @@ const initialState = {
   answer: null,
   points: 0,
   highscore: 0,
-  SecondsRemaining: 10,
+  SecondsRemaining: null,
 };
 function reducer(state, action) {
   switch (action.type) {
@@ -36,6 +36,7 @@ function reducer(state, action) {
       return {
         ...state,
         status: "active",
+        SecondsRemaining: state.questions.length * SECS_PER_QUESTION,
       };
     case "newAnswer":
       const question = state.questions.at(state.index);
